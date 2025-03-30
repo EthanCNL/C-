@@ -18,18 +18,18 @@ void Event::TriggerEvent(Room& currentRoom, float& playerHp, float& playerArmor,
         break;
 
     case 1:
-        std:: cout << "You stepped on a spikey trap! as a result you take 10 damage.\n";
+        std::cout << "You stepped on a spikey trap! as a result you take 10 damage.\n";
         playerHp -= 10;
         break;  // cases 1 to 3 have std since their variables are from Player.h
 
     case 2:
-        std :: cout << "you find a health potion on the floor! it restores 25 hp.\n";
+        std::cout << "you find a health potion on the floor! it restores 25 hp.\n";
         playerItems.push_back("Health Potion");
         break;
 
 
     case 3:
-        std:: cout << "you find an iron chestplate on the floor, it adds 25 armor for you.\n";
+        std::cout << "you find an iron chestplate on the floor, it adds 25 armor for you.\n";
         playerArmor += 25;
         break;
     }
