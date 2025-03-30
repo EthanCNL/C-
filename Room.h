@@ -1,7 +1,7 @@
 
 #ifndef ROOM_H
 #define ROOM_H
-#include "Enemy.h"
+//#include "Enemy.h"
 #include <vector>
 #include <string>
 #include <memory>

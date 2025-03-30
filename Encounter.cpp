@@ -11,6 +11,7 @@ namespace En
 {
     bool isPlayerTurn;
     string action;
+    int blockModifier;
 
     Encounter::Encounter()
     {
@@ -60,7 +61,7 @@ namespace En
     void Encounter::Fight()
     {
         //enemyHp -= (playerAtk + playerWeapon - enemyArmor);
-        //cout << "\nYou dealt " << (playerAtk + playerWeapon - enemyArmor) << " Damage!\n";
+        //cout << "\nYou dealt " << (playerAtk + playerWeapon - enemyArmor - blockModifier) << " Damage!\n";
         cin.ignore();
         cin.ignore();
     }
@@ -74,6 +75,7 @@ namespace En
         {
             MainLoop::inCombat = false;
             monstersKilled++;
+            decrease # of enemies in room
             return;
         }*/
         /*if (playerHp <= 0)
@@ -105,15 +107,29 @@ namespace En
         }
         else
         {
-            int randomInt = rand() % 2;
-            if (randomInt == 0)
+            int modifier = 0;
+            // if enemy is *type* + to modifier
+            int randomInt = rand() % 101;
+            if (randomInt >= 0 || randomInt <= 75)
             {
                 EnemyAttack();
             }
             
-            if (randomInt == 1)
+            if (randomInt > 75 || randomInt <= 100)
             {
                 EnemyHeal();
+            }
+            
+            if (randomInt > 100 || randomInt <= 125) //block
+            {
+                blockModifier = 10;
+            }
+
+            if (randomInt > 125 || randomInt <= 150) // Run
+            {
+                //decrease # of enemies
+                cout << "The Enemy Ran Away!";
+                MainLoop::inCombat = false;
             }
             
         }

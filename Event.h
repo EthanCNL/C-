@@ -1,8 +1,8 @@
 #ifndef EVENT_H
 #define EVENT_H
-#include "Player.h"
+//#include "Player.h"
 #include "Room.h" //room header file has <vector> and <string> already defined so i wont define again
-
+#include <string>
 
 class Event {
 

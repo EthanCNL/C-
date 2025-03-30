@@ -1,10 +1,11 @@
 
 
 #include "Event.h"
-#include "Player.h"
-#include "Enemy.h"
+//#include "Player.h"
+//#include "Enemy.h"
 #include <memory>
 #include <iostream>
+#include <list>
 
 void Event::TriggerEvent(Room& currentRoom, float& playerHp, float& playerArmor,
     std::list<std::string>& playerItems) {

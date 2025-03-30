@@ -14,6 +14,7 @@ namespace En {
 		string action;
 		void Run();
 		void Core();
+		int blockModifier;
 
 	};
 
