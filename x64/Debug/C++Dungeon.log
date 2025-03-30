@@ -1,6 +1,11 @@
-﻿  Event.cpp
-C:\Users\joshu\Desktop\New folder\C-final\C-\Event.cpp(3,10): fatal  error C1083: Cannot open include file: 'Event.h': No such file or directory
+﻿  Encounter.cpp
+C:\Users\joshu\Desktop\New folder\C-final\C-\Encounter.cpp(109,32): warning C4390: ';': empty controlled statement found; is this the intent?
+C:\Users\joshu\Desktop\New folder\C-final\C-\Encounter.cpp(111,32): warning C4390: ';': empty controlled statement found; is this the intent?
+  Event.cpp
+C:\Users\joshu\Desktop\New folder\C-final\C-\Event.h(3,10): fatal  error C1083: Cannot open include file: 'Player.h': No such file or directory
   HealthPotion.cpp
+  Inventory.cpp
+  Main.cpp
   Room.cpp
-C:\Users\joshu\Desktop\New folder\C-final\C-\Room.cpp(3,10): fatal  error C1083: Cannot open include file: 'Room.h': No such file or directory
+C:\Users\joshu\Desktop\New folder\C-final\C-\Room.h(4,10): fatal  error C1083: Cannot open include file: 'Enemy.h': No such file or directory
   Generating Code...

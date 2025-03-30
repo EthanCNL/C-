@@ -106,10 +106,16 @@ namespace En
         else
         {
             int randomInt = rand() % 2;
-            if (randomInt == 0);
-            EnemyAttack();
-            if (randomInt == 1);
-            EnemyHeal();
+            if (randomInt == 0)
+            {
+                EnemyAttack();
+            }
+            
+            if (randomInt == 1)
+            {
+                EnemyHeal();
+            }
+            
         }
         isPlayerTurn = !isPlayerTurn;
     }
