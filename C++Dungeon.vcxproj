@@ -129,19 +129,23 @@
   <ItemGroup>
     <ClCompile Include="Encounter.cpp" />
     <ClCompile Include="eqItem.cpp" />
+    <ClCompile Include="Event.cpp" />
     <ClCompile Include="HealthPotion.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainLoop.cpp" />
+    <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Encounter.h" />
     <ClInclude Include="eqItem.h" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="HealthPotion.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MainLoop.h" />
+    <ClInclude Include="Room.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

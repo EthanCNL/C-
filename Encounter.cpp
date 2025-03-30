@@ -3,8 +3,10 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include "HealthPotion.h"
 using namespace std;
 using namespace Loop;
+using namespace IItem;
 namespace En
 {
     bool isPlayerTurn;
@@ -97,7 +99,8 @@ namespace En
             }
             if (action == "Item")
             {
-                //Heal();
+                HealthPotion potion;
+                potion.Use();
             }
         }
         else
