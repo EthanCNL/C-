@@ -12,7 +12,7 @@ namespace RoomG
     public:
         static int roomNumber;
         static int enemyNum;
-        int enemiesLeft;
+        int enemiesLeft = -1;
         vector<unique_ptr<Enem::Enemy> > enemies; // unique_ptr allows for polymorphism to multiple enemy types
         std::vector<string> loot;
         std::vector<int> adjacentRooms;
@@ -26,6 +26,7 @@ namespace RoomG
         void IncrementEnemies();
         int GetEnemiesLeft();
         std::unique_ptr<Enem::Enemy>& ReturnEnemy(int num);
+        std::vector<std::unique_ptr<Enem::Enemy>>& ReturnPointer();
     };
 }
 

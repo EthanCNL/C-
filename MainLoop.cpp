@@ -21,11 +21,24 @@ namespace Loop
 	void MainLoop::CoreLoop(int num)
 	{
         Room::DisplayRoomInfo(num);
-        cout << ("Choose an action:\nFight\tLoot\tExplore\n");
+        cout << ("Choose an action:\nFight\tExplore\n");
         cin >> MainLoop::action;
         if (MainLoop::action == "Fight")
         {
             MainLoop::inCombat = true;
+        }
+        if (MainLoop::action == "Explore")
+        {
+            int random = rand() % 51;
+            if (random < 50)
+            {
+                Room::roomNumber++;
+                Room::enemyNum = 0;
+            }
+            else
+                cout << "You ran into an Enemy!\n";
+                MainLoop::inCombat = true;
+            
         }
         system("cls");
 	}

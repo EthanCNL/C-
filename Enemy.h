@@ -3,7 +3,9 @@
 #define ENEMY_H
 #include<iostream>
 #include<string>
+#include "eqItem.h"
 using namespace std;
+using namespace IItem;
 namespace Enem {
 	class Enemy {
 	public:
@@ -20,6 +22,7 @@ namespace Enem {
 		int ReturnWP();
 		void SetHP(int num);
 		string ReturnName();
+		EquipableItem item;
 		Enemy();
 		void Count();
 	};

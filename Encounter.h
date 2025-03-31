@@ -10,8 +10,9 @@ namespace En {
 		Encounter();
 		~Encounter();
 		void Fight(std::unique_ptr<Enem::Enemy>& enemy);
-		void EnemyAttack();
-		void EnemyHeal();
+		void EnemyAttack(std::unique_ptr<Enem::Enemy>& enemy);
+		void EnemyHeal(std::unique_ptr<Enem::Enemy>& enemy);
+		void EnemyRun();
 		bool isPlayerTurn;
 		string action;
 		void Run();

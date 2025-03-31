@@ -8,6 +8,8 @@
 #include "Enemy.h"
 #include "Player.h"
 #include <ctime>
+#include <cmath>
+#include "Inventory.h"
 
 using namespace Enem;
 using namespace std;
@@ -15,6 +17,7 @@ using namespace Loop;
 using namespace IItem;
 using namespace RoomG;
 using namespace Play;
+using namespace Inven;
 namespace En
 {
     bool Encounter::won;
@@ -39,28 +42,42 @@ namespace En
             cout << "Ran!\n";
             MainLoop::inCombat = false;
             cin.ignore();
+            cin.ignore();
         }
         else
         {
             cout << "You failed to Run!\n";
+            cin.ignore();
             cin.ignore();
         }
 
     }
 
     //function for enemy to deal damage || Joshua
-    void Encounter::EnemyAttack()
+    void Encounter::EnemyAttack(std::unique_ptr<Enem::Enemy>& enemy)
     {
         cout << "Enemy Turn!\n";
-        //playerHp -= (enemyAtk + enemyWeapon - playerArmor);
-        //cout << "The enemy did " << (enemyAtk + enemyWeapon - playerArmor) << " Damage!\n";
+        Player::playerHp -= (enemy -> ReturnATK() + enemy->ReturnATK() - Player::playerArmor);
+        cout << "The enemy did " << (enemy->ReturnATK() + enemy->ReturnATK() - Player::playerArmor) << " Damage!\n";
+        cin.ignore();
         cin.ignore();
     }
 
-    void Encounter::EnemyHeal()
+    void Encounter::EnemyRun()
+    {
+        MainLoop::inCombat = false;
+        Encounter::won = true;
+        cout << "Enemy Ran!";
+        cin.ignore();
+        cin.ignore();
+    }
+
+    void Encounter::EnemyHeal(std::unique_ptr<Enem::Enemy>& enemy)
     {
         cout << "Enemy Heals Themself!\n";
-        //enemyHp += enemyHP * 0.2f;
+        int temp = enemy->ReturnHP();
+        temp += enemy->ReturnHP() * round(0.2);
+        cin.ignore();
         cin.ignore();
     }
 
@@ -68,9 +85,9 @@ namespace En
     void Encounter::Fight(unique_ptr<Enemy>& enemy)
     {
         int temp = enemy -> ReturnHP();
-        int temp2 = (temp -= (Player::playerAtk + Player::playerWeapon - enemy->ReturnAP()));
+        int temp2 = (temp - (Player::playerAtk + Player::playerWeapon - enemy->ReturnAP()));
         enemy -> SetHP(temp2);
-        cout << "\nYou dealt " << temp2 << " Damage!\n";
+        cout << "\nYou dealt " << Player::playerAtk + Player::playerWeapon - enemy->ReturnAP() << " Damage!\n";
         cin.ignore();
         cin.ignore();
     }
@@ -79,21 +96,20 @@ namespace En
     //combat function || Joshua
     void Encounter::Core(unique_ptr<Enemy>& enemy)
     {
+        
         srand(time(0));
         system("cls");
         if (enemy -> ReturnHP() <= 0)
         {
             cout << enemy->ReturnName() << " Defeated! \n";
-            Room::enemyNum++;
-            MainLoop::inCombat = false;
             Encounter::won = true;
+            MainLoop::inCombat = false;     
             return;
         }
         if (Player::playerHp <= 0)
         {
             MainLoop::inCombat = false;
             Encounter::won = false;
-            //LoseScreen();
         }
         cout << "Your HP: " << Player::playerHp << "\n";
         cout << enemy -> ReturnName() << " HP: " << enemy->ReturnHP() << "\n\n";
@@ -113,35 +129,43 @@ namespace En
             }
             if (action == "Item")
             {
-                HealthPotion potion;
-                potion.Use();
+                if (!Inventory::inventory.empty())
+                {
+                    HealthPotion potion;
+                    potion.Use();
+                    Player::playerHp = 100;
+                    cin.ignore();
+                    cin.ignore();
+                }
+                
             }
         }
         else
         {
-            int modifier = 0;
-            // if enemy is *type* + to modifier
-            int randomInt = rand() % 101;
-            if (randomInt >= 0 || randomInt <= 75)
+            int randomInt = rand() % 151;
+            cout << randomInt;
+            if (randomInt >= 0 && randomInt <= 75)
             {
-                EnemyAttack();
+                EnemyAttack(enemy);
             }
             
-            if (randomInt > 75 || randomInt <= 100)
+            if (randomInt > 75 && randomInt <= 100)
             {
-                EnemyHeal();
+                EnemyHeal(enemy);
             }
             
-            if (randomInt > 100 || randomInt <= 125) //block
+            if (randomInt > 100 && randomInt <= 125)
             {
+                cout << "Enemy Blocked!";
                 blockModifier = 10;
             }
 
-            if (randomInt > 125 || randomInt <= 150) // Run
+            if (randomInt > 125 && randomInt <= 150)
             {
-                //decrease # of enemies
                 cout << "The Enemy Ran Away!";
+                system("cls");
                 MainLoop::inCombat = false;
+
             }
             
         }

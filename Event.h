@@ -11,6 +11,7 @@ using namespace RoomG;
 namespace Even
 {
 	class Event {
+	public:
 		void TriggerEvent();
 	};
 }

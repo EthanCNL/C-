@@ -10,7 +10,7 @@ namespace RoomG
 	std::vector<std::unique_ptr<Enem::Enemy>> enemies;
 	int Room::roomNumber = 0;
 	int Room::enemyNum = 0;
-	int enemiesLeft = 0;
+	int enemiesLeft = -1;
 
 	Room::Room()
 	{
@@ -29,10 +29,10 @@ namespace RoomG
 
 	void Room::AddEnemy(std::unique_ptr<Enem::Enemy> enemy) {
 		enemies.push_back(std::move(enemy));
-
+		IncrementEnemies();
 	}
 
-	void Room::RemoveEnemy() {
+	void Room::RemoveEnemy() {		
 		enemies.erase(enemies.begin());
 		enemiesLeft--;
 	}
@@ -46,6 +46,11 @@ namespace RoomG
 	void Room::DisplayRoomInfo(int num) {
 		cout << "Room: " << roomNumber + 1 << "\n";
 		cout << "Enemies: " << num << "\n";
+	}
+
+	std::vector<std::unique_ptr<Enem::Enemy>>& Room::ReturnPointer()
+	{
+		return enemies;
 	}
 
 	std::unique_ptr<Enem::Enemy>& Room::ReturnEnemy(int num)

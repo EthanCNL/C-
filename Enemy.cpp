@@ -9,6 +9,7 @@ namespace Enem {
 	int armorPoints;
 	int ATK;
 	string monsterType;
+	EquipableItem item;
 
 	//Enemy Constructor and destructor
 	Enemy::Enemy() {
