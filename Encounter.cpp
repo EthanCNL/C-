@@ -77,6 +77,7 @@ namespace En
         cout << "Enemy Heals Themself!\n";
         int temp = enemy->ReturnHP();
         temp += enemy->ReturnHP() * round(0.2);
+        enemy->SetHP(temp);
         cin.ignore();
         cin.ignore();
     }
@@ -86,7 +87,7 @@ namespace En
     {
         int temp = enemy -> ReturnHP();
         int temp2 = (temp - (Player::playerAtk + Player::playerWeapon - enemy->ReturnAP()));
-        enemy -> SetHP(temp2);
+        enemy -> SetHP(std::max(0, temp2));
         cout << "\nYou dealt " << Player::playerAtk + Player::playerWeapon - enemy->ReturnAP() << " Damage!\n";
         cin.ignore();
         cin.ignore();
