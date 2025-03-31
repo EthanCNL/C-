@@ -1,11 +1,6 @@
 ﻿  Encounter.cpp
-C:\Users\joshu\Desktop\New folder\C-final\C-\Encounter.cpp(109,32): warning C4390: ';': empty controlled statement found; is this the intent?
-C:\Users\joshu\Desktop\New folder\C-final\C-\Encounter.cpp(111,32): warning C4390: ';': empty controlled statement found; is this the intent?
-  Event.cpp
-C:\Users\joshu\Desktop\New folder\C-final\C-\Event.h(3,10): fatal  error C1083: Cannot open include file: 'Player.h': No such file or directory
-  HealthPotion.cpp
-  Inventory.cpp
   Main.cpp
+  MainLoop.cpp
   Room.cpp
-C:\Users\joshu\Desktop\New folder\C-final\C-\Room.h(4,10): fatal  error C1083: Cannot open include file: 'Enemy.h': No such file or directory
   Generating Code...
+  C++Dungeon.vcxproj -> C:\Users\joshu\Desktop\New folder\C-final\C-\x64\Debug\C++Dungeon.exe

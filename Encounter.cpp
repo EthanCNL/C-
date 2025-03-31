@@ -4,22 +4,24 @@
 #include <string>
 #include <cstdlib>
 #include "HealthPotion.h"
+#include "Room.h"
+
 using namespace std;
 using namespace Loop;
 using namespace IItem;
+using namespace RoomG;
 namespace En
 {
+
     bool isPlayerTurn;
     string action;
     int blockModifier;
 
     Encounter::Encounter()
     {
-        cout << "Battle Start!";
     }
     Encounter::~Encounter()
     {
-        cout << "Battle End";
     }
 
     //function to run || Joshua 
@@ -68,9 +70,10 @@ namespace En
 
 
     //combat function || Joshua
-    void Encounter::Core()
+    void Encounter::Core(int enemyNum, int roomNum, std::vector<std::unique_ptr<Room>>& rooms)
     {
         system("cls");
+        rooms[roomNum]
         /*if (enemyHp <= 0)
         {
             MainLoop::inCombat = false;

@@ -3,12 +3,15 @@
 //#include "Player.h"
 #include "Room.h" //room header file has <vector> and <string> already defined so i wont define again
 #include <string>
+#include <list>
 
-class Event {
+using namespace std;
+using namespace RoomG;
 
-	void TriggerEvent(Room& currentRoom, float& playerHp, float& playerArmor, std::list<string>& playerItems);
-
-};
-
-
+namespace Even
+{
+	class Event {
+		void TriggerEvent();
+	};
+}
 #endif 

@@ -12,14 +12,14 @@ using namespace IItem;
 using namespace std;
 
 
-namespace Inventory
+namespace Inven
 {
     class Inventory {
     public:
-        const int MAX_INVENTORY_SIZE = 5;
-        vector<std::unique_ptr<Item>> inventory;
-        unique_ptr<EquipableItem> left_hand = nullptr;
-        unique_ptr<EquipableItem> right_hand = nullptr;
+        static const int MAX_INVENTORY_SIZE = 5;
+        static vector<std::unique_ptr<Item>>inventory;
+        static unique_ptr<EquipableItem> left_hand;
+        static unique_ptr<EquipableItem> right_hand;
         void ShowEquipment();
         bool AddToInventory(unique_ptr<Item> item);
         void EquipItem(unique_ptr<EquipableItem> item);

@@ -11,7 +11,7 @@ namespace IItem {
 
     public:
         Item(const std::string& itemName);
-        virtual void Use() const = 0;
+        virtual void Use() const;
         virtual void PrintInfo() const;
         std::string GetName() const;
         virtual ~Item();

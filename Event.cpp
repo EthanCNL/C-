@@ -1,37 +1,42 @@
-
-
 #include "Event.h"
-//#include "Player.h"
-//#include "Enemy.h"
+#include "Player.h"
+#include "Inventory.h"
+#include "Item.h"
 #include <memory>
 #include <iostream>
 #include <list>
+#include "HealthPotion.h"
+#include <vector>
+using namespace Play;
+using namespace Inven;
+using namespace std;
 
-void Event::TriggerEvent(Room& currentRoom, float& playerHp, float& playerArmor,
-    std::list<std::string>& playerItems) {
-    int totalEvents = 4;
-    int eventType = rand() % totalEvents;
+namespace Even
+{ 
 
-    switch (eventType) {
-    case 0:
-        std::cout << "Watch out! An enemy appeared!\n";
-        currentRoom.AddEnemy(make_unique<Enemy>(monsterList[rand() % monsterList.size()])); //uses make_unique as asked for in question 6 as well as polymorphism, this case has std since <enemy> struct  is from Enemy.h 
-        break;
-
-    case 1:
-        std::cout << "You stepped on a spikey trap! as a result you take 10 damage.\n";
-        playerHp -= 10;
-        break;  // cases 1 to 3 have std since their variables are from Player.h
-
-    case 2:
-        std::cout << "you find a health potion on the floor! it restores 25 hp.\n";
-        playerItems.push_back("Health Potion");
-        break;
+    void Event::TriggerEvent() {
+        int totalEvents = 3;
+        int eventType = rand() % totalEvents;
 
 
-    case 3:
-        std::cout << "you find an iron chestplate on the floor, it adds 25 armor for you.\n";
-        playerArmor += 25;
-        break;
+        switch (eventType) {
+
+        case 0:
+            std::cout << "You stepped on a spikey trap! as a result you take 10 damage.\n";
+            Player::playerHp -= 10;
+            break;  // cases 1 to 3 have std since their variables are from Player.h
+
+        case 1:
+            std::cout << "you find a health potion on the floor! it restores 25 hp.\n";
+            Inventory::inventory.push_back(make_unique<Item>("Health Potion"));
+            break;
+
+
+        case 2:
+            std::cout << "you find an iron chestplate on the floor, it adds 25 armor for you.\n";
+            Player::playerArmor += 10;
+            break;
+        }
     }
 }
+

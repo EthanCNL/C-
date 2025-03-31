@@ -2,7 +2,9 @@
 #include <iostream>
 #include <string>
 #include "Item.h"
+#include "Room.h"
 using namespace std;
+using namespace RoomG;
 namespace Loop
 {
     bool MainLoop::inCombat;
@@ -18,7 +20,7 @@ namespace Loop
     }
 	void MainLoop::CoreLoop()
 	{
-        cout << "Room: " << "\tEnemies: " << "\tAdjacent Rooms: " << "\tChests: " << "\n";
+        Room::DisplayRoomInfo();
         cout << ("Choose an action:\nFight\tLoot\tExplore\n");
         cin >> MainLoop::action;
         if (MainLoop::action == "Fight")

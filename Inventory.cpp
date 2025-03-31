@@ -1,7 +1,14 @@
 #include "Inventory.h"
 
-namespace Inventory
+using namespace std;
+
+namespace Inven
 {
+    const int MAX_INVENTORY_SIZE = 5;
+    vector<std::unique_ptr<Item>> Inventory::inventory;
+    unique_ptr<EquipableItem> Inventory::left_hand;
+    unique_ptr<EquipableItem> Inventory::right_hand;
+
     void Inventory::ShowEquipment() {
         std::cout << "\nCurrently Equipped:\n";
         std::cout << "Left Hand:  " << (left_hand ? left_hand->GetName() : "Empty") << "\n";

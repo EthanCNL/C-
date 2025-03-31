@@ -11,5 +11,10 @@ namespace IItem {
         return name;
     }
 
+    void Item::Use() const
+    {
+
+    }
+
     Item::~Item() {}
 }
