@@ -29,7 +29,7 @@ namespace Loop
         }
         if (MainLoop::action == "Explore")
         {
-            int random = rand() % 51;
+            int random = rand() % 101;
             if (random < 50)
             {
                 Room::roomNumber++;
