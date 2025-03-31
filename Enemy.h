@@ -22,7 +22,6 @@ namespace Enem {
 		int ReturnWP();
 		void SetHP(int num);
 		string ReturnName();
-		EquipableItem item;
 		Enemy();
 		void Count();
 	};
