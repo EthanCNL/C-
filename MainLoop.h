@@ -10,7 +10,7 @@ namespace Loop {
 		string action;
 		MainLoop();
 		~MainLoop();
-		void CoreLoop();
+		void CoreLoop(int num);
 		bool ReturnCombat();
 		void SetCombat(bool input);
 	};

@@ -7,48 +7,34 @@ using namespace Enem;
 
 namespace RoomG
 {
-	std::vector<std::unique_ptr<Enem::Enemy>> Room::enemies;
-	int Room::roomNumber = 1;
+	std::vector<std::unique_ptr<Enem::Enemy>> enemies;
+	int Room::roomNumber = 0;
 	int Room::enemyNum = 0;
+	int enemiesLeft = 0;
 
 	Room::Room()
 	{
-		int randomEnemyNum = rand() % 3;
-		for (int i = 0; i <= randomEnemyNum; i++)
-		{
-			int randomEnemyType = rand() % 4;
-			if (randomEnemyType == 0)
-			{
-				AddEnemy(make_unique<Slime>());
-			}
-			if (randomEnemyType == 1)
-			{
-				AddEnemy(make_unique<Goblin>());
-			}
-			if (randomEnemyType == 2)
-			{
-				AddEnemy(make_unique<Orc>());
-			}
-			if (randomEnemyType == 3)
-			{
-				AddEnemy(make_unique<Skeleton>());
-			}
-		}
+		
 	}
 
-
-	void Room::SetEnemyNum(int num)
+	void Room::IncrementEnemies()
 	{
-		enemyNum = num;
+		enemiesLeft++;
 	}
 
-	void Room::SetRoomNum(int num)
+	int Room::GetEnemiesLeft()
 	{
-		roomNumber = num;
+		return enemiesLeft;
 	}
 
 	void Room::AddEnemy(std::unique_ptr<Enem::Enemy> enemy) {
 		enemies.push_back(std::move(enemy));
+
+	}
+
+	void Room::RemoveEnemy() {
+		enemies.erase(enemies.begin());
+		enemiesLeft--;
 	}
 	void Room::AddLoot(const std::string& item) {
 		loot.push_back(item);
@@ -57,8 +43,13 @@ namespace RoomG
 
 		adjacentRooms.push_back(roomNum);
 	}
-	void Room::DisplayRoomInfo() {
-		cout << "Room: " << roomNumber << "\n";
-		cout << "Enemies: " << enemies.size() << "\n";
+	void Room::DisplayRoomInfo(int num) {
+		cout << "Room: " << roomNumber + 1 << "\n";
+		cout << "Enemies: " << num << "\n";
+	}
+
+	std::unique_ptr<Enem::Enemy>& Room::ReturnEnemy(int num)
+	{
+		return enemies.at(num);
 	}
 }

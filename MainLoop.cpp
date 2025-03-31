@@ -18,9 +18,9 @@ namespace Loop
     {
 
     }
-	void MainLoop::CoreLoop()
+	void MainLoop::CoreLoop(int num)
 	{
-        Room::DisplayRoomInfo();
+        Room::DisplayRoomInfo(num);
         cout << ("Choose an action:\nFight\tLoot\tExplore\n");
         cin >> MainLoop::action;
         if (MainLoop::action == "Fight")

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Room.h"
+#include "Enemy.h"
 using namespace std;
 namespace En {
 	class Encounter
@@ -8,15 +9,15 @@ namespace En {
 	public:
 		Encounter();
 		~Encounter();
-		void Fight();
+		void Fight(std::unique_ptr<Enem::Enemy>& enemy);
 		void EnemyAttack();
 		void EnemyHeal();
 		bool isPlayerTurn;
 		string action;
 		void Run();
-		void Core(int enemyNum, int roomNum, std::vector<std::unique_ptr<Room>>& rooms);
+		void Core(std::unique_ptr<Enem::Enemy>& enemy);
 		int blockModifier;
-
+		static bool won;
 	};
 
 }

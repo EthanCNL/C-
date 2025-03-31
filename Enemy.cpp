@@ -4,10 +4,10 @@
 using namespace std;
 namespace Enem {
 	int Enemy::count = 0;
-	float HP;
+	int HP;
 	int weaponPoints;
 	int armorPoints;
-	float ATK;
+	int ATK;
 	string monsterType;
 
 	//Enemy Constructor and destructor
@@ -24,6 +24,32 @@ namespace Enem {
 		cout << "Enemies in the Room: " << ++Enemy::count - 1 << "\n";
 	}
 
+	int Enemy::ReturnHP()
+	{
+		return HP;
+	}
+	int Enemy::ReturnATK()
+	{
+		return ATK;	
+	}
+	int Enemy::ReturnAP()
+	{
+		return armorPoints;
+	}
+	int Enemy::ReturnWP()
+	{
+		return weaponPoints;
+	}
+
+	void Enemy::SetHP(int num)
+	{
+		HP = num;
+	}
+
+	string Enemy::ReturnName()
+	{
+		return monsterType;
+	}
 	Slime::Slime()
 	{
 		monsterType = "Slime";

@@ -8,12 +8,18 @@ namespace Enem {
 	class Enemy {
 	public:
 		static int count;
-		float HP;
-		float ATK;
+		int HP;
+		int ATK;
 		int weaponPoints;
 		int armorPoints;
 		string monsterType;
 		string gearName;
+		int ReturnHP();
+		int ReturnATK();
+		int ReturnAP();
+		int ReturnWP();
+		void SetHP(int num);
+		string ReturnName();
 		Enemy();
 		void Count();
 	};

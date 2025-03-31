@@ -1,6 +1,6 @@
 ﻿  Encounter.cpp
+C:\Users\joshu\Desktop\New folder\C-final\C-\Encounter.cpp(82,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Main.cpp
-  MainLoop.cpp
-  Room.cpp
+C:\Users\joshu\Desktop\New folder\C-final\C-\Main.cpp(52,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Generating Code...
   C++Dungeon.vcxproj -> C:\Users\joshu\Desktop\New folder\C-final\C-\x64\Debug\C++Dungeon.exe

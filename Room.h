@@ -12,17 +12,20 @@ namespace RoomG
     public:
         static int roomNumber;
         static int enemyNum;
-        static std::vector<unique_ptr<Enem::Enemy> > enemies; // unique_ptr allows for polymorphism to multiple enemy types
+        int enemiesLeft;
+        vector<unique_ptr<Enem::Enemy> > enemies; // unique_ptr allows for polymorphism to multiple enemy types
         std::vector<string> loot;
         std::vector<int> adjacentRooms;
         int currentEnemy;
         Room();
         void AddEnemy(std::unique_ptr<Enem::Enemy> enemy);
+        void RemoveEnemy();
         void AddLoot(const string& item);
         void AddAdjacentRoom(int roomNum);
-        static void DisplayRoomInfo();
-        void SetEnemyNum(int num);
-        void SetRoomNum(int num);
+        static void DisplayRoomInfo(int num);
+        void IncrementEnemies();
+        int GetEnemiesLeft();
+        std::unique_ptr<Enem::Enemy>& ReturnEnemy(int num);
     };
 }
 

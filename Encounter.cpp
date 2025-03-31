@@ -5,14 +5,19 @@
 #include <cstdlib>
 #include "HealthPotion.h"
 #include "Room.h"
+#include "Enemy.h"
+#include "Player.h"
+#include <ctime>
 
+using namespace Enem;
 using namespace std;
 using namespace Loop;
 using namespace IItem;
 using namespace RoomG;
+using namespace Play;
 namespace En
 {
-
+    bool Encounter::won;
     bool isPlayerTurn;
     string action;
     int blockModifier;
@@ -60,35 +65,39 @@ namespace En
     }
 
     // function to damage enemy || Joshua
-    void Encounter::Fight()
+    void Encounter::Fight(unique_ptr<Enemy>& enemy)
     {
-        //enemyHp -= (playerAtk + playerWeapon - enemyArmor);
-        //cout << "\nYou dealt " << (playerAtk + playerWeapon - enemyArmor - blockModifier) << " Damage!\n";
+        int temp = enemy -> ReturnHP();
+        int temp2 = (temp -= (Player::playerAtk + Player::playerWeapon - enemy->ReturnAP()));
+        enemy -> SetHP(temp2);
+        cout << "\nYou dealt " << temp2 << " Damage!\n";
         cin.ignore();
         cin.ignore();
     }
 
 
     //combat function || Joshua
-    void Encounter::Core(int enemyNum, int roomNum, std::vector<std::unique_ptr<Room>>& rooms)
+    void Encounter::Core(unique_ptr<Enemy>& enemy)
     {
+        srand(time(0));
         system("cls");
-        rooms[roomNum]
-        /*if (enemyHp <= 0)
+        if (enemy -> ReturnHP() <= 0)
         {
+            cout << enemy->ReturnName() << " Defeated! \n";
+            Room::enemyNum++;
             MainLoop::inCombat = false;
-            monstersKilled++;
-            decrease # of enemies in room
+            Encounter::won = true;
             return;
-        }*/
-        /*if (playerHp <= 0)
+        }
+        if (Player::playerHp <= 0)
         {
             MainLoop::inCombat = false;
+            Encounter::won = false;
             //LoseScreen();
         }
-        cout << "Your HP: " << playerHp << "\n";
-        cout << "Enemy HP: " << enemyHp << "\n\n";
-        */
+        cout << "Your HP: " << Player::playerHp << "\n";
+        cout << enemy -> ReturnName() << " HP: " << enemy->ReturnHP() << "\n\n";
+        
         if (isPlayerTurn)
         {
             cout << "Your turn!\n\n";
@@ -96,7 +105,7 @@ namespace En
             cin >> action;
             if (action == "Fight")
             {
-                Fight();
+                Fight(enemy);
             }
             if (action == "Run")
             {
@@ -138,4 +147,6 @@ namespace En
         }
         isPlayerTurn = !isPlayerTurn;
     }
+
+    
 }

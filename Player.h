@@ -15,8 +15,8 @@ namespace Play
 	public:
 		static int playerArmor;
 		static int playerWeapon;
-		static float playerHp;
-		static float playerAtk;
+		static int playerHp;
+		static int playerAtk;
 		static vector<unique_ptr<Item>>playerItems;
 	};
 }
