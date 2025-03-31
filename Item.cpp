@@ -13,6 +13,18 @@ namespace IItem {
 
     void Item::Use() const
     {
+        
+     std::cout << "You use the " << name << ".\n";
+    
+    if (name == "Health Potion") {
+        std::cout << "Restores 25 HP!\n";
+    }
+    else if (name == "Armor") {
+        std::cout << "Restores 15 armor!\n";
+    }
+    else {
+        std::cout << "Nothing happened!! Select an item \n";
+    }
 
     }
 
